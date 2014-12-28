@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<title>Daily Autobiography</title>
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+	<script src="app.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Pacifico|Open+Sans' rel='stylesheet' type='text/css'>
+	<link href="style.css" rel="stylesheet">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="top">
+			<div class="hero">Daily Autobiography</div>
+			<div class="caption">Write your day and tell your story over time.<br>Share your life with a printed book.
+			</div>
+			<div class="form-wrapper">
+				<form>
+					<textarea rows="3" class="entry" ng-model="entry" ng-trim="false" maxlength="160" placeholder="Today's entry" required></textarea>
+					<p class="counter">{{160 - entry.length}} characters left</p>
+					<button class="btn" type="submit"><i class="fa fa-pencil-square-o"></i> Write</button>
+				</form>
+			</div>
+		</div>
+
+			
+	</div>
+</body>
+</html>

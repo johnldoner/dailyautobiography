@@ -1,0 +1,84 @@
+<html ng-app="app">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Daily Autobiogrpahy</title>
+	<meta name="author" content="Chris Cruz" />
+	<meta name="description" content="Daily Autobiography." />
+	<meta name="keywords"  content="Autobiography,Daily Autobiography" />
+	<meta name="Resource-type" content="Document" />
+
+
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+	<script src="app.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="https://dailyautobiography.site44.com/css/jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="https://dailyautobiography.site44.com/css/examples.css" />
+	<link rel="stylesheet" type="text/css" href="https://dailyautobiography.site44.com/css/phone_input.css" />
+
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE'],
+				anchors: ['Page1', 'Page2', 'Page3'],
+				menu: '#menu',
+				loopTop: true,
+				loopBottom: true
+			});
+		});
+	</script>
+
+</head>
+<body ng-controller="ctrl">
+<ul id="menu">
+	<li data-menuanchor="Page1" class="active"><a href="#Page1">Login</a></li>
+	<li data-menuanchor="Page2"><a href="#Page2">Enter Phone Number</a></li>
+	<li data-menuanchor="Page3"><a href="#Page3">Read Autobiography</a></li>
+</ul>
+
+<div id="fullpage">
+	<div class="section " id="section0">
+		<div class="form-signin" role="form">
+			<div class="form-group">
+				<p>Hello, {{user.google.displayName}}</p>
+				<button class="btn btn-lg btn-danger" id="Gbtn"  ng-click="GoogleLogin()">
+					<i class="fa fa-google-plus-square fa-2x" ></i>
+					Login with Google
+				</button>
+			</div>
+		</div>
+
+	</div>
+	<div class="section" id="section1">
+		<div class="intro">
+			<form class="box" ng-submit="userinfo.$save()">
+				<input type="emailer" placeholder="Enter Your 11 Digits" ng-change="userinfo.$save(id)"  ng-model="userinfo.phone_number"></input>
+				<input type="submit" value="Submit"></input>
+			</form>
+
+		</div>
+	</div>
+	<div class="section" id="section2">
+		<div class="intro">
+			<h1>Read your autobiography</h1>
+			<p>Each day we'll send you a text message to remind you to write your sentence. </p>
+			<div ng-repeat="(id,item) in bios">
+				{{item.body}}
+			</div>
+
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
